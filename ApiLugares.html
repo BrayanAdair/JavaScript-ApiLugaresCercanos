@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ApiTotal</title>
+      <!-- CSS BOOTSRAP -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <!-- JavaScript BOOTSRAP -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- SCRIPS DE API -->
+
+        <link href="css/Styles-Map.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <!-- <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>    -->   
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+       <script src="js/Scripts.js"></script>
+
+
+           
+        <!-- FIN DE SCRIPS API --> 
+  </head>
+  <body>
+    <!-- Navbar -->
+          <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h5 class="text-white h4">Esto solo es el template de prueba de brayan</h5>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">0
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+        </div>
+      </nav>
+      
+    <!-- Fin NavBar -->
+
+
+    <!-- Formulario Api Busqueda -->
+   
+        <center>
+          <h3 style="font-size: 50px;">ApiBrayan</h3>
+            
+                <div id="tabDenue"> </div>
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-2">
+                  <label class="form-label" for="condi">Condici&oacute;n: &nbsp; </label>
+                  <input style="max-width:120px;" type="text" id="pac-input" aria-label="Condición" value="" tabindex="515" placeholder="Busca un Lugar" />
+                     <!--  <select style="max-height:120px;" name="cars" id="pac-input">
+                          <option value="bar">Bares</option>
+                          <option value="escuela">Escuelas</option>
+                          <option value="parque">Parques</option>
+                          <option value="motel">Moteles</option>
+                      </select> -->
+              </div>
+              <div class="col-md-auto">
+                <label for="lat">Latitud: &nbsp; </label>
+                          <input style="max-width:120px;"  type="submit text" id="lat" aria-label="Latitud" value="20.04201743" tabindex="516"   />  
+              </div>
+              <div class="col col-lg-2">
+                      <label for="lon">Longitud: &nbsp;</label>
+                      <input style="max-width:120px;" type="submit text" id="lon" aria-label="Longitud"  value="-98.79437699" tabindex="517" />
+              </div>
+            </div>
+              <div class="row justify-content-md-center">
+                <div class="col col-lg-2">
+                <label for="mts">Metros: &nbsp;</label>
+                <input style="max-width:120px;" type="submit text" id="mts" aria-label="Metros"  value="3000" tabindex="518" />  
+                </div>
+                <div class="col-md-auto">
+                  <label for="destino">Dest.Lat. &nbsp;</label>
+                   <input style="max-width:120px;" type="submit text" id="DestinoLa" aria-label="Destino" placeholder="Latitud Destino" value="" tabindex="518" /> 
+                </div>
+                <div class="col col-lg-2">
+                    <label for="destinoLo">Des.Lon. &nbsp;</label>
+                    <input style="max-width:120px;" type="submit text" id="DestinoLo" placeholder="Longitud Destino" aria-label="Destino"  value="" tabindex="518" />  
+                </div>
+              </div>
+         
+         
+
+           <div class="container">
+            <div class="row justify-content-md-center">
+              <hr/>
+              <div class="col col-lg-2">
+                <asp:Label ID="lugares" runat="server" Text="Lugares Encontrados:" CssClass="section-label">Lugar:</asp:Label><input style="max-width:120px;" disabled type="text" id="ToLugar"   aria-label=""  value=""/>
+              </div>
+              <div class="col-md-auto">
+              <asp:Label ID="Label19" runat="server" Text="Bares:" CssClass="section-label">Moteles:</asp:Label> <input style="max-width:120px;" type="text" id="ToMoteles" disabled aria-label=""  value=""/> 
+              </div>
+              <div class="col col-lg-2">
+                <asp:Label ID="Label20" runat="server" Text="Escuelas:" CssClass="section-label">Escuelas:</asp:Label><input style="max-width:120px;" type="text" id="ToEscu" disabled aria-label=""  value=""/>
+              </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-4">
+                  Parques:<input type="text"style="max-width:120px;" name="Lugar" id="ToParques" disabled aria-label=""  value=""/>
+                </div>
+                
+                <div class="col col-lg-4">
+                  Total:<input type="text"style="max-width:120px;" name="Lugar" id="ToTotal" disabled aria-label=""  value=""/>
+                </div>
+              </div>
+              
+                <br>Id establecimiento: <input type="text" id="idUE" value="6740313" />
+                <input type="button" onclick="llamarApiDenueBus()" value="Ver marcador en mapa"/>
+                <br>(Al presionar el marcador en el mapa se muestra la informaci�n del establecimiento)
+
+
+          </div>
+                    
+
+
+
+            <div class="col-lg-8 col-md-6 col-sm-12">
+            <div class="table-responsive table-bordered">
+              <table id="example" class="table" style="font-size:12px;">
+                  </br>
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">RAZON SOCIAL</th>
+                <th scope="col">ACTIVIDAD</th>
+                <th scope="col">PERSONAL</th>
+                <th scope="col">UBICACION</th>
+                <th scope="col">COLONIA</th>
+                <th scope="col">CALLE</th>
+                <th scope="col">C.P.</th>
+                <th scope="col">NUM.EXTERIOR</th> 
+                <th scope="col">VIALIDAD</th>
+                <th scope="col">PAGINA</th>
+                <th scope="col">CORREO</th>
+                <th scope="col">TELEFONO</th>
+                <th scope="col">TIPO TEL.</th>
+                <th scope="col">LATITUD</th>
+                <th scope="col">LONGITUD</th>
+            </tr>
+        </thead>        
+    </table>           
+            </div>
+            </div>
+                </center>
+                <center>
+                  <div class="row justify-content-md-center">
+
+                      <div class="col col-lg-2">
+                       <input id="mot" type="checkbox" onclick="llamarApiDenueBus()" aria-label="moteles" value="motel">
+                        <br/>
+                        <label>Moteles</label>
+                      </div>
+
+                      <div class="col-md-auto">
+                        <input id="escu" type="checkbox" onclick="llamarApiDenueBus()" aria-label="Escuelas" value="escuela">
+                        <br/>
+                        <label>Escuelas</label>
+                      </div>
+
+                      <div class="col col-lg-2">
+                        <input id="can" type="checkbox" onclick="llamarApiDenueBus()" value="Parque" aria-label="EscuelasZona">
+                        <br/>
+                        <label>Parques</label>
+                      </div>
+                      
+
+
+                    </div>
+                  </center>
+            
+    
+
+
+    </div>
+
+  <!-- Fin Formulario Api -->
+      <!-- Mapa -->
+     
+      
+      <br>
+      <div class="row">
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <!--Card-->
+        <div class="card card-cascade narrower">
+          <!--Card image-->
+          <div class="view view-cascade gradient-card-header blue-gradient">
+            <center><h5 class="mb-0">Fuente  Google</h5></center>
+          </div>
+          <!--/Card image-->
+          <!--Card content-->
+          <div class="card-body card-body-cascade text-center">
+            <!--Google map-->
+            <div id="map" class="z-depth-1-half map-container-5" style="height: 300px">
+              <iframe src="https://maps.google.com/maps?q=san%20Francisco&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+            </div>
+          </div>
+          <!--/.Card content-->
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card card-cascade narrower">
+
+          <!--Card image-->
+
+          <div class="view view-cascade gradient-card-header peach-gradient">
+            <center><h5 class="mb-0">Fuente  INEGI</h5></center>
+          </div>
+          <!--/Card image-->
+
+          <!--Card content-->
+          <div class="card-body card-body-cascade text-center">
+
+            <!--Google map-->
+            <div id="map-canvas" class="z-depth-1-half map-container-5" style="height: 300px">
+              
+             <!--  <iframe src="https://maps.google.com/maps?q=Madryt&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" style="border:0" allowfullscreen=""></iframe> -->
+            </div>
+  </body>
+ 
+   
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initAutocomplete&libraries=places,drawing&v=weekly&channel=2"async></script>
+</html>
+
